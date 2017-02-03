@@ -32,7 +32,7 @@ Here is a minimal echo bot using Flask
     from kik.messages import messages_from_json, TextMessage
 
     app = Flask(__name__)
-    kik = KikApi(BOT_USERNAME, BOT_API_KEY)
+    kik = KikApi(omanbots, cbdbffb1-9446-4c1c-8f98-364816b3242d)
 
     kik.set_configuration(Configuration(webhook=YOUR_WEBHOOK))
 
