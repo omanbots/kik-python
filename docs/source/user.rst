@@ -32,9 +32,9 @@ Here is a minimal echo bot using Flask
     from kik.messages import messages_from_json, TextMessage
 
     app = Flask(__name__)
-    kik = KikApi(BOT_USERNAME, BOT_API_KEY)
+    kik = KikApi(omanbots, cbdbffb1-9446-4c1c-8f98-364816b3242d)
 
-    kik.set_configuration(Configuration(webhook=YOUR_WEBHOOK))
+    kik.set_configuration(Configuration(API=omanbots))
 
     @app.route('/incoming', methods=['POST'])
     def incoming():
@@ -66,7 +66,7 @@ The core of the library is the :class:`KikApi<kik.KikApi>` class, which is used 
 The client needs to be instantiated with your bot's username and API key:
 
     >>> from kik import KikApi
-    >>> kik = KikApi(BOT_USERNAME, BOT_API_KEY)
+    >>> kik = KikApi(omanbots, cbdbffb1-9446-4c1c-8f98-364816b3242d)
 
 Configuration
 -------------
@@ -78,7 +78,7 @@ functions.
 :class:`Configuration<kik.Configuration>` object.
 
   >>> from kik import KikApi
-  >>> kik = KikApi(BOT_USERNAME, BOT_API_KEY)
+  >>> kik = KikApi(omanbots, cbdbffb1-9446-4c1c-8f98-364816b3242d)
   >>> config = kik.get_configuration()
   >>> config.webhook
   'https://example.com/incoming'
@@ -87,8 +87,8 @@ functions.
 :class:`Configuration<kik.Configuration>` object.
 
   >>> from kik import KikApi, Configuration
-  >>> kik = KikApi(BOT_USERNAME, BOT_API_KEY)
-  >>> config = Configuration(webhook='https://example.com/incoming')
+  >>> kik = KikApi(omanbots, cbdbffb1-9446-4c1c-8f98-364816b3242d)
+  >>> config = Configuration(api='https://example.com/incoming')
   >>> kik.set_configuration(config)
   <kik.Configuration>
 
@@ -103,7 +103,7 @@ incoming requests to your webhook <https://dev.kik.com/#/docs/messaging#api-auth
 Just call the method with the provided signature header and the body of the incoming HTTP request:
 
     >>> from kik import KikApi
-    >>> kik = KikApi(BOT_USERNAME, BOT_API_KEY)
+    >>> kik = KikApi(omanbots, cbdbffb1-9446-4c1c-8f98-364816b3242d)
     >>> kik.verify_signature(SIGNATURE_HEADER, REQUEST_BODY)
     True
 
@@ -132,7 +132,7 @@ Messages are sent using :func:`KikApi.send_messages<kik.KikApi.send_messages>` f
 
    >>> from kik import KikApi
    >>> from kik.messages import TextMessage
-   >>> kik = KikApi(BOT_USERNAME, BOT_API_KEY)
+   >>> kik = KikApi(omanbots, cbdbffb1-9446-4c1c-8f98-364816b3242d)
    >>> kik.send_messages([
    ...     TextMessage(
    ...         to='aleem',
@@ -147,7 +147,7 @@ using :func:`KikApi.send_broadcast<kik.KikApi.send_broadcast>`.
 
    >>> from kik import KikApi
    >>> from kik.messages import TextMessage
-   >>> kik = KikApi(BOT_USERNAME, BOT_API_KEY)
+   >>> kik = KikApi(omanbots, cbdbffb1-9446-4c1c-8f98-364816b3242d)
    >>> kik.send_broadcast([
    ...     TextMessage(
    ...         to='aleem',
@@ -221,7 +221,7 @@ from their username.
 The function returns a :class:`User<kik.User>`, containing the user's profile
 
   >>> from kik import KikApi
-  >>> kik = KikApi(BOT_USERNAME, BOT_API_KEY)
+  >>> kik = KikApi(omanbots, cbdbffb1-9446-4c1c-8f98-364816b3242d)
   >>> user = kik.get_user('aleem')
   >>> user.first_name
   'Johnny'
@@ -237,7 +237,7 @@ This function takes an optional data parameter which will be embedded in the Kik
 for the code.
 
   >>> from kik import KikApi
-  >>> kik = KikApi(BOT_USERNAME, BOT_API_KEY)
+  >>> kik = KikApi(omanbots, cbdbffb1-9446-4c1c-8f98-364816b3242d)
   >>> code = kik.create_code({'some': 'data'})
   >>> code.url()
   'https://api.kik.com/v1/code/161d764eeebf050fba373ae8cef9f5052524019a'
